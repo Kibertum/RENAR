@@ -1,0 +1,33 @@
+# RENAR — инженерия требований и нормативная адаптивная регуляция
+
+> RENAR — самостоятельный нормативный стандарт инженерии требований для AI-нативной разработки. Иерархия BR/SR/TR, ADAPT и ACTZ, 12 типов SPEC, контрольные примеры (TC) и приёмочные тесты (AT), возможности хранилища V1–V6, уровни RENAR-1..5. Дополняет SENAR. Версия 1.1.
+
+## Authors
+Vadim Soglaev, Andrey Yumashev
+
+## Docs
+
+- [Standard: Introduction](https://renar.tech/docs/standard/00-introduction/): MVR, таксономия дрейфа, язык RU-корпуса §0.7.
+- [Standard: Scope](https://renar.tech/docs/standard/01-scope/): закрытые списки §1.7, негативная область.
+- [Standard: Terms](https://renar.tech/docs/standard/04-terms/): канонические термины.
+- [Standard: ADAPT](https://renar.tech/docs/standard/07-adapt/): forward + backward, подпись архитектора; ACTZ — контрактный протокол с двусторонней подписью.
+- [Standard: Conformance](https://renar.tech/docs/standard/13-conformance/): manifest, обязательные пункты, self-assessment.
+- [Standard: Normative refs](https://renar.tech/docs/standard/14-normative-refs/): ISO 29148, 5338, 23894; информативный каталог.
+
+## Key Concepts
+
+- **BR/SR/TR**: бизнес → система → задача.
+- **ADAPT**: внутренняя интерпретация неизменяемого ТЗ, подпись архитектора.
+- **ACTZ**: контрактный протокол уточнения ТЗ, двусторонняя подпись; итоговое ТЗ = начальное ТЗ + подписанные ACTZ.
+- **12 SPEC**: ARCH/API/DATA/INT/PROC/UI/AI/SEC/OPS/TEST/DOC/UC (закрытый список).
+- **TC и AT**: контрольные примеры внутреннего контура; AT — приёмка от итогового ТЗ.
+- **V1–V6**: возможности хранилища (substrate).
+- **RENAR-1..5**: уровни зрелости (Ad-hoc … Optimized).
+
+## Optional
+
+- [Guide](https://renar.tech/docs/guide/): быстрый старт, сквозные примеры, миграция.
+- [Reference](https://renar.tech/docs/reference/): глоссарий, схемы, самооценка соответствия.
+- [Core](https://renar.tech/docs/core/): мягкое введение.
+- [GitHub](https://github.com/Kibertum/RENAR)
+- [Website](https://renar.tech)

@@ -1,0 +1,154 @@
+# Machine-readable index of normative enforcement points (RENAR v1.0, RU).
+# Informative companion: reference/10-agent-implementation-profile.md
+# Source of truth for clause text: standard/00–14
+#
+# Индекс перечисляет точки принуждения; ТЕКСТ нормы живёт в главах. При
+# расхождении индекса и главы главенствует глава.
+# Целостность ссылок и гейтов проверяет scripts/check-normative-index.js.
+
+version: "1.0"
+lang: ru
+
+clauses:
+  - id: MVR-1
+    ref: standard/02-methodology-positioning.md#2.3
+    conformance-ref: standard/13-conformance.md#13.3.1
+    modality: MUST
+    title: SoT inversion
+    produces: [BR, SR, SPEC, TC]
+    validates: [no-reverse-engineering-from-code]
+    gate: null
+
+  - id: MVR-2
+    ref: standard/03-substrate-versioning.md#3.3
+    conformance-ref: standard/13-conformance.md#13.3.2
+    modality: MUST
+    title: Возможности носителя V1–V6
+    produces: [RENAR-CONFORMANCE.yaml#substrate-capabilities]
+    validates: [v1-immutable-history, v2-atomic-change-unit, v3-diff-review, v4-branching, v5-cross-substrate-pin, v6-author-timestamp]
+    gate: null
+
+  - id: MVR-3
+    ref: standard/07-adapt.md
+    conformance-ref: standard/13-conformance.md#13.3.3
+    modality: MUST
+    title: Reactive, stage-agnostic ADAPT (0..N per TZ)
+    produces: [ADAPT, AR, ACTZ]
+    validates: [adapt-applicability, architect-signature, actz-dual-signature, backward-findings-closed-list, decided-in-signed-actz]
+    gate: QG-ADAPT-approve
+
+  - id: MVR-4
+    ref: standard/08-specifications.md#8.3
+    conformance-ref: standard/13-conformance.md#13.3.4
+    modality: MUST
+    title: Closed list 11 SPEC types
+    produces: [SPEC]
+    validates: [spec-type-in-closed-list]
+    gate: QG-0
+
+  - id: MVR-5
+    ref: standard/09-test-cases.md#9.7
+    conformance-ref: standard/13-conformance.md#13.3.5
+    modality: MUST
+    title: TC pos/neg pairing
+    produces: [TC]
+    validates: [coverage-presence-per-normative-assertion, pos-neg-pair-per-normative-assertion]
+    gate: QG-0
+
+  - id: MVR-6
+    ref: standard/10-lifecycle-qg.md#10.3
+    conformance-ref: standard/13-conformance.md#13.3.6
+    modality: MUST
+    title: Quality Gates closed list
+    produces: [gate-declaration]
+    validates: [qg-0-required, qg-1-required, qg-2-required]
+    gate: null
+
+  - id: MVR-7
+    ref: standard/13-conformance.md#13.4
+    modality: MUST
+    title: Conformance manifest
+    produces: [RENAR-CONFORMANCE.yaml]
+    validates: [senar-version, renar-version, mandatory-clauses-confirmed]
+    gate: null
+
+  # Обязательные положения §13.3. ВНИМАНИЕ: биекции MVR ↔ §13.3 нет —
+  # MVR-7 отображается на §13.4, а §13.3.7 и §13.3.8 не входят ни в один MVR.
+  - id: MC-13.3.1
+    ref: standard/13-conformance.md#13.3.1
+    modality: MUST
+    title: Mandatory SoT inversion
+    parent: MVR-1
+    gate: null
+
+  - id: MC-13.3.2
+    ref: standard/13-conformance.md#13.3.2
+    modality: MUST
+    title: Mandatory V1–V6
+    parent: MVR-2
+    gate: null
+
+  - id: MC-13.3.3
+    ref: standard/13-conformance.md#13.3.3
+    modality: MUST
+    title: Mandatory reactive ADAPT
+    parent: MVR-3
+    gate: QG-ADAPT-approve
+
+  - id: MC-13.3.4
+    ref: standard/13-conformance.md#13.3.4
+    modality: MUST
+    title: Mandatory SPEC closed list (12 types, SPEC-UC added in v1.1)
+    parent: MVR-4
+    gate: null
+
+  - id: MC-13.3.5
+    ref: standard/13-conformance.md#13.3.5
+    modality: MUST
+    title: Mandatory TC pos/neg
+    parent: MVR-5
+    gate: QG-0
+
+  - id: MC-13.3.6
+    ref: standard/13-conformance.md#13.3.6
+    modality: MUST
+    title: Mandatory QG closed list
+    parent: MVR-6
+    gate: null
+
+  - id: MC-13.3.7
+    ref: standard/13-conformance.md#13.3.7
+    modality: MUST
+    title: Closed lists backward findings и SPEC-декомпозиций
+    parent: null
+    validates: [backward-category-closed-list, spec-decomposition-closed-list]
+    gate: null
+
+  - id: MC-13.3.8
+    ref: standard/13-conformance.md#13.3.8
+    modality: MUST
+    title: Межуровневая прослеживаемость подсистем (implements-edge)
+    parent: null
+    validates: [implements-edge-subsystem-to-system]
+    gate: null
+
+  - id: QG-0
+    ref: standard/10-lifecycle-qg.md#10.3.1
+    modality: MUST
+    title: Context / Approval gate
+    applies_to: [BR, SR, TR, SPEC, ADAPT, TC]
+    gate: QG-0
+
+  - id: QG-1
+    ref: standard/10-lifecycle-qg.md#10.3.2
+    modality: MUST
+    title: Implementation gate
+    applies_to: [TC]
+    gate: QG-1
+
+  - id: QG-2
+    ref: standard/10-lifecycle-qg.md#10.3.3
+    modality: MUST
+    title: Verification gate
+    applies_to: [BR, SR, SPEC, TR]
+    gate: QG-2
